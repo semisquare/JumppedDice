@@ -1,0 +1,121 @@
+[gd_scene load_steps=12 format=3 uid="uid://dtiambd4yuaj1"]
+
+[ext_resource type="PackedScene" uid="uid://dmryv0lxg24fo" path="res://Assets/Characters/Character.tscn" id="1_5awj8"]
+[ext_resource type="Script" path="res://Assets/Characters/Player/Player.gd" id="1_hcklk"]
+[ext_resource type="Texture2D" uid="uid://dpxtus4236hgt" path="res://Assets/Characters/Player/Dice.png" id="2_5t11m"]
+[ext_resource type="Script" path="res://Assets/Characters/StateMachine/PlayerStates/PlayerGround.gd" id="3_vk8ci"]
+[ext_resource type="Script" path="res://Assets/Characters/StateMachine/PlayerStates/PlayerAir.gd" id="5_dyxxv"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_p7f7e"]
+radius = 7.0
+height = 14.0
+
+[sub_resource type="Animation" id="Animation_kh536"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Body:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_agccj"]
+resource_name = "air"
+length = 0.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Body:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [12, 13, 14, 15, 16, 17]
+}
+
+[sub_resource type="Animation" id="Animation_o8bg1"]
+resource_name = "idle"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Body:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5]
+}
+
+[sub_resource type="Animation" id="Animation_asqt8"]
+resource_name = "run"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Body:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [6, 7, 8, 9, 10, 11]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_jesdr"]
+_data = {
+"RESET": SubResource("Animation_kh536"),
+"air": SubResource("Animation_agccj"),
+"idle": SubResource("Animation_o8bg1"),
+"run": SubResource("Animation_asqt8")
+}
+
+[node name="Player" instance=ExtResource("1_5awj8")]
+z_index = 1
+collision_layer = 2
+script = ExtResource("1_hcklk")
+
+[node name="Camera" type="Camera2D" parent="." index="0"]
+offset = Vector2(0, -36)
+process_callback = 0
+limit_bottom = 180
+limit_smoothed = true
+position_smoothing_enabled = true
+position_smoothing_speed = 8.0
+
+[node name="Collision" parent="." index="1"]
+position = Vector2(0, -7)
+shape = SubResource("CapsuleShape2D_p7f7e")
+
+[node name="BaseAnimation" type="AnimationPlayer" parent="." index="2"]
+libraries = {
+"": SubResource("AnimationLibrary_jesdr")
+}
+
+[node name="Body" parent="." index="3"]
+position = Vector2(0, -6)
+texture = ExtResource("2_5t11m")
+hframes = 20
+
+[node name="Eye" type="Sprite2D" parent="Body" index="0"]
+
+[node name="StateMachine" parent="." index="4"]
+initial_state = NodePath("PlayerGround")
+
+[node name="PlayerGround" type="Node" parent="StateMachine" index="0"]
+script = ExtResource("3_vk8ci")
+
+[node name="PlayerAir" type="Node" parent="StateMachine" index="1"]
+script = ExtResource("5_dyxxv")

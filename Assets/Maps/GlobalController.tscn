@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://chptej3d2vq2k"]
+
+[ext_resource type="Script" path="res://Assets/Maps/GlobalController.gd" id="1_ayre4"]
+
+[node name="GlobalController" type="Node"]
+script = ExtResource("1_ayre4")

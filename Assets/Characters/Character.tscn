@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://dmryv0lxg24fo"]
+
+[ext_resource type="Script" path="res://Assets/Characters/Character.gd" id="1_x6alw"]
+[ext_resource type="Script" path="res://Assets/Characters/StateMachine/StateMachine.gd" id="2_5ifwb"]
+
+[node name="Character" type="CharacterBody2D"]
+floor_max_angle = 0.261799
+script = ExtResource("1_x6alw")
+
+[node name="Collision" type="CollisionShape2D" parent="."]
+
+[node name="Body" type="Sprite2D" parent="."]
+
+[node name="StateMachine" type="Node" parent="."]
+script = ExtResource("2_5ifwb")

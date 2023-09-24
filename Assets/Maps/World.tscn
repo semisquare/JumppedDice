@@ -1,0 +1,27 @@
+[gd_scene load_steps=3 format=3 uid="uid://b6qx8klmyvcha"]
+
+[ext_resource type="Script" path="res://Assets/Maps/Map.gd" id="1_ucls7"]
+[ext_resource type="Texture2D" uid="uid://c4d24scxbpin7" path="res://Assets/UI/PaperTexture.png" id="2_eolup"]
+
+[node name="World" type="Node2D"]
+script = ExtResource("1_ucls7")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.768627, 0.721569, 0.65098, 1)
+
+[node name="ScreenPaper" type="NinePatchRect" parent="CanvasLayer"]
+self_modulate = Color(1, 1, 1, 0.2)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_eolup")
