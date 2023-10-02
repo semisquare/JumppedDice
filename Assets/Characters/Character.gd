@@ -12,7 +12,7 @@ const MOVE_SPEED = 60.0
 const MOVE_ACCELERATION = 780.0
 const MOVE_FRICTION = 600.0
 
-const JUMP_FORCE = 240.0
+const JUMP_FORCE = 280.0
 const GRAVITY = 980.0
 const AIR_ACCELERATION = 158.0
 const AIR_FRICTION = 340.0
@@ -26,6 +26,7 @@ var input_vector = Vector2.ZERO
 
 @onready var body: Sprite2D = $Body
 @onready var base_animation: AnimationPlayer = $BaseAnimation
+@onready var character_data: CharacterData = $CharacterData
 #@onready var base_animation_tree: AnimationTree = $BaseAnimationTree
 #@onready var base_animation_state_machine = base_animation_tree.get("parameters/playback")
 

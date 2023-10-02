@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://b6qx8klmyvcha"]
+[gd_scene load_steps=4 format=3 uid="uid://b6qx8klmyvcha"]
 
 [ext_resource type="Script" path="res://Assets/Maps/Map.gd" id="1_ucls7"]
 [ext_resource type="Texture2D" uid="uid://c4d24scxbpin7" path="res://Assets/UI/PaperTexture.png" id="2_eolup"]
+[ext_resource type="PackedScene" uid="uid://1xmo2yjvdk6r" path="res://Assets/Point/Mesh.tscn" id="3_co7cn"]
 
 [node name="World" type="Node2D"]
 script = ExtResource("1_ucls7")
@@ -25,3 +26,8 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("2_eolup")
+
+[node name="CanvasLayer2" type="CanvasLayer" parent="."]
+layer = 2
+
+[node name="Mesh" parent="CanvasLayer2" instance=ExtResource("3_co7cn")]

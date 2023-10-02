@@ -18,6 +18,8 @@ var current_number
 func _ready():
 	super._ready()
 	
+	GlobalController.player = self
+	
 	eye.hframes = body.hframes
 	set_random()
 

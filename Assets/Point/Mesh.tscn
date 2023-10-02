@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://1xmo2yjvdk6r"]
+
+[ext_resource type="Script" path="res://Assets/Point/Mesh.gd" id="1_1rr4s"]
+[ext_resource type="Texture2D" uid="uid://dntt2fjum3wh1" path="res://Assets/Point/Point.png" id="1_3v2m7"]
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_aeekg"]
+_surfaces = [{
+"2d": true,
+"aabb": AABB(-0.5, -0.5, 0, 1.00001, 1.00001, 0),
+"attribute_data": PackedByteArray(0, 0, 128, 63, 0, 0, 128, 63, 0, 0, 0, 0, 0, 0, 128, 63, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 128, 63, 0, 0, 0, 0),
+"format": 33558545,
+"index_count": 6,
+"index_data": PackedByteArray(3, 0, 0, 0, 1, 0, 1, 0, 2, 0, 3, 0),
+"primitive": 3,
+"vertex_count": 4,
+"vertex_data": PackedByteArray(0, 0, 0, 63, 0, 0, 0, 63, 0, 0, 0, 191, 0, 0, 0, 63, 0, 0, 0, 191, 0, 0, 0, 191, 0, 0, 0, 63, 0, 0, 0, 191)
+}]
+
+[sub_resource type="MultiMesh" id="MultiMesh_ogikm"]
+
+[node name="Mesh" type="Node2D"]
+script = ExtResource("1_1rr4s")
+
+[node name="Unit" type="MeshInstance2D" parent="."]
+mesh = SubResource("ArrayMesh_aeekg")
+texture = ExtResource("1_3v2m7")
+
+[node name="MultiMeshInstance" type="MultiMeshInstance2D" parent="."]
+multimesh = SubResource("MultiMesh_ogikm")

@@ -11,8 +11,9 @@ func physics_update(_delta: float) -> void:
 		state_machine.transition_to("PlayerAir")
 		return
 	
-	if owner.is_pressed_jump:
+	if owner.is_pressed_jump and owner.character_data.stamina >= owner.character_data.consume_stamina:
 		owner.velocity.y = -owner.JUMP_FORCE
+		owner.character_data.stamina -= owner.character_data.consume_stamina
 	
 	if abs(owner.input_vector.x) <= 0:
 		owner.velocity.x = move_toward(owner.velocity.x, 0, owner.MOVE_FRICTION * _delta)

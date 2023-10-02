@@ -1,0 +1,17 @@
+[gd_scene load_steps=5 format=3 uid="uid://d023obpmv3np2"]
+
+[ext_resource type="Script" path="res://Assets/Point/Points2.gd" id="1_at2pb"]
+[ext_resource type="PackedScene" uid="uid://vvofy3shbenh" path="res://Assets/Point/Point.tscn" id="1_qjv51"]
+
+[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_8sdlt"]
+resource_name = "Points"
+scenes/0/scene = ExtResource("1_qjv51")
+
+[sub_resource type="TileSet" id="TileSet_0v56a"]
+tile_size = Vector2i(1, 1)
+sources/0 = SubResource("TileSetScenesCollectionSource_8sdlt")
+
+[node name="Points2" type="TileMap"]
+tile_set = SubResource("TileSet_0v56a")
+format = 2
+script = ExtResource("1_at2pb")

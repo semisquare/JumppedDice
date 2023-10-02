@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://cva58qdnu5ctr"]
+[gd_scene load_steps=5 format=3 uid="uid://cva58qdnu5ctr"]
 
 [ext_resource type="Texture2D" uid="uid://bjrhr68sdb38e" path="res://Assets/UI/ScreenBlack.png" id="1_kquny"]
 [ext_resource type="Shader" path="res://Assets/UI/ScreenBlurred.gdshader" id="1_kw25d"]
+[ext_resource type="Script" path="res://Assets/UI/Fps.gd" id="3_fqn5o"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_bkc71"]
 shader = ExtResource("1_kw25d")
@@ -30,3 +31,11 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("1_kquny")
+
+[node name="Label" type="Label" parent="."]
+offset_left = 6.0
+offset_top = 4.0
+offset_right = 61.0
+offset_bottom = 30.0
+text = "fps: 0.2"
+script = ExtResource("3_fqn5o")

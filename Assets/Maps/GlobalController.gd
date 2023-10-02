@@ -1,5 +1,7 @@
 extends Node
 
+var player: Character
+
 func _ready():
 	seed(int(Time.get_unix_time_from_system()))
 
@@ -11,7 +13,7 @@ func RollDice():
 	var rand_color: Color
 	match rand_number:
 		1:
-			rand_color = Color.WHITE
+			rand_color = Color.GRAY
 		2:
 			rand_color = Color.SEA_GREEN
 		3:
